@@ -2,14 +2,15 @@
 
 **Divide, Dilute, Direct**
 
-CCD is a methodology for planning, executing and maintaining software work done by LLM agents. Engineering intent, live project knowledge and artefacts extracted from conversations are compiled into **execution plans**: Markdown documents whose tasks are grouped, sized and tagged so that each group can be routed to the cheapest capable model and executed with only the context it needs.
+CCD is a methodology for planning, executing and maintaining software work done by LLM agents. Engineering intent, architecture files, live project knowledge and artefacts extracted from conversations are compiled into **execution plans**: Markdown documents whose tasks are grouped, sized and tagged so that each group can be routed to the cheapest capable model and executed with only the context it needs.
 
 The compiler analogy is deliberate. A compiler lowers something written for a mind, pass by pass, into something a simpler machine can run, without changing what it means. CCD lowers *difficulty* in the same way and must preserve *intent*: requirements, invariants and acceptance criteria survive every pass unchanged.
 
 ```mermaid
 flowchart LR
     CONV["Conversations"] -->|"extract and review"| ART["Memory artefacts"]
-    REPO["Code, tests, architecture"] --> PLAN
+    ARCH["Architecture files"] --> PLAN
+    REPO["Code and tests"] --> PLAN
     ART -->|"compile"| PLAN["Execution plan"]
     PLAN -->|"Divide, Dilute, Direct"| GRP["Tagged task groups"]
     GRP -->|"route by difficulty"| EXE["Executor agents"]
